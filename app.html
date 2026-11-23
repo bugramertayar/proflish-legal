@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Proflish'i indir</title>
+    <meta name="description" content="Proflish: mesleğine göre İngilizce. Uygulamayı telefonunun mağazasından indir." />
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      // The app shares this page ("Uygulamayı paylaş"). It sends each phone to its own store, so the receiver never
+      // lands in the wrong one. The links must match `apps/mobile/src/config/store.ts`, except that the App Store
+      // link names the Turkish storefront: the app is sold in Turkiye only, and a browser outside it would otherwise
+      // open its own storefront and show "The page you're looking for can't be found".
+      (function () {
+        var PLAY_LISTING = 'https://play.google.com/store/apps/details?id=com.proflish.app';
+        var APP_STORE_LISTING = 'https://apps.apple.com/tr/app/id6836237674';
+        // One switch per store. A listing does not open before the app is public there, so with the switch off the
+        // phone stays on this page instead of landing on a dead link. When a store goes live, set its switch to true
+        // and replace its line in the list below with a link to the listing.
+        // True since the production release on Google Play (2026-11-23).
+        var PLAY_LIVE = true;
+        // True since the App Store release.
+        var APP_STORE_LIVE = true;
+        var agent = navigator.userAgent || '';
+        if (/Android/i.test(agent)) {
+          if (PLAY_LIVE) location.replace(PLAY_LISTING);
+        } else if (APP_STORE_LIVE && /iPhone|iPad|iPod/i.test(agent)) location.replace(APP_STORE_LISTING);
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html">Proflish</a>
+      <nav aria-label="Yasal sayfalar">
+        <a href="privacy.html">Gizlilik</a>
+        <a href="consent.html">Açık rıza</a>
+        <a href="terms.html">Kullanım koşulları</a>
+        <a href="delete-account.html">Hesap silme</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Proflish'i indir</h1>
+      <p>Mesleğine göre İngilizce: günde 3 dakikalık dersler, her cevapta Türkçe açıklama.</p>
+      <ul>
+        <li><a href="https://play.google.com/store/apps/details?id=com.proflish.app">Android: Google Play'de aç</a></li>
+        <li><a href="https://apps.apple.com/tr/app/id6836237674">iPhone: App Store'da aç</a></li>
+      </ul>
+    </main>
+
+    <footer class="site-footer">
+      <p>Proflish · Buğra Mert Ayar · <a href="mailto:proflish.app@gmail.com">proflish.app@gmail.com</a></p>
+    </footer>
+  </body>
+</html>
